@@ -76,4 +76,8 @@ export default class MainStore {
     get weatherResource() {
         return WeatherResource;
     }
+
+    get week() {
+        return [this.today, ...this.rest];
+    }
 }

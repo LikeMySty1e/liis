@@ -1,5 +1,6 @@
 import {CUBE_ROUTE, MAIN_ROUTE} from './resources/consts';
 import Main from "./pages/Main";
+import Cube from './pages/Cube';
 
 export const routes = [
     {
@@ -8,6 +9,6 @@ export const routes = [
     },
     {
         path: CUBE_ROUTE,
-        Component: `Cube`
+        Component: Cube
     }
 ]
