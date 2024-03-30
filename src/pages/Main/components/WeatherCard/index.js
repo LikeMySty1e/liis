@@ -7,21 +7,18 @@ import SvgIcon from '../../../../components/common/SvgIcon/SvgIcon';
 import {mapGradient} from '../../../../helpers/gradientHelper';
 
 import style from './style.module.scss';
+import weatherStyle from '../../../../styles/weather.module.scss';
 
 function WeatherCard(props) {
     const { data, flags } = props;
 
-    const getCardClassnames = () => {
-        return cn(
-            style.card,
-            style[data.todayWeatherResource.cardClassname]
-        );
-    };
+    console.log(data.today)
 
     const renderHeader = () => {
        return <div className={style.details}>
             <div className={style.temp}>{data.today.temp}<span className={style.unit}>°C</span></div>
             <div className={style.meta}>
+                <div className={style.field}>{data.today.date}</div>
                 <div className={style.field}>{data.name}</div>
                 {data.today.feelsLike && <div className={cn(style.field, style.subtext)}>
                     Ощущается как {data.today.feelsLike}°C
@@ -31,10 +28,10 @@ function WeatherCard(props) {
     };
 
     const renderCondition = () => {
-        const [start, end] = data.todayWeatherResource.gradient;
+        const [start, end] = data.today.resource.gradient;
 
         return <div className={style.text} style={{ backgroundImage: mapGradient(start, end) }}>
-            {data.todayWeatherResource.name}
+            {data.today.resource.name}
         </div>;
     };
 
@@ -42,10 +39,10 @@ function WeatherCard(props) {
         return null;
     }
 
-    return <div className={getCardClassnames()}>
+    return <div className={cn(style.card, weatherStyle[data.today.resource.cardClassname])}>
         {renderHeader()}
         <div className={style.icon__container}>
-            <SvgIcon width={`128px`} height={`128px`} Icon={data.todayWeatherResource.icon}/>
+            <SvgIcon width={`128px`} height={`128px`} Icon={data.today.resource.icon}/>
         </div>
         {renderCondition()}
     </div>;
@@ -55,15 +52,15 @@ WeatherCard.propTypes = {
     data: PropTypes.shape({
         city: PropTypes.string,
         today: PropTypes.shape({
-            date: PropTypes.number,
+            date: PropTypes.string,
             temp: PropTypes.number,
-            feelsLike: PropTypes.number
-        }),
-        todayWeatherResource: PropTypes.shape({
-            icon: PropTypes.object,
-            name: PropTypes.string,
-            gradient: PropTypes.arrayOf(PropTypes.string),
-            cardClassname: PropTypes.string
+            feelsLike: PropTypes.number,
+            resource: PropTypes.shape({
+                icon: PropTypes.object,
+                name: PropTypes.string,
+                gradient: PropTypes.arrayOf(PropTypes.string),
+                cardClassname: PropTypes.string
+            })
         })
     }),
     flags: PropTypes.shape({
@@ -75,8 +72,7 @@ const injection = ({ store }) => {
     return {
         data: {
             name: store.location.name,
-            today: store.today,
-            todayWeatherResource: store.todayWeatherResource
+            today: store.today
         },
         flags: {
             isLoading: store.isLoading

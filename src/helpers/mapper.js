@@ -1,3 +1,6 @@
+import WeatherResource from '../resources/weatherResource';
+import WeatherConditionEnum from '../enums/WeatherConditionEnum';
+
 export const mapWeatherData = (list = []) => {
     const mappedWeatherData = [];
 
@@ -9,14 +12,20 @@ export const mapWeatherData = (list = []) => {
         const [weather] = list[i].weather;
 
         mappedWeatherData.push({
-            date: new Date(list[i].dt_txt).getDate(),
+            date: new Date(list[i].dt_txt).toLocaleDateString().slice(0, 10),
             temp: Math.round(list[i].main.temp),
             feelsLike: Math.round(list[i].main.feels_like),
-            condition: weather.main
+            condition: weather.main,
+            resource: WeatherResource[weather.main] || WeatherResource[WeatherConditionEnum.Clouds]
         })
     }
 
-    return mappedWeatherData;
+    const today = mappedWeatherData.shift();
+
+    return {
+        today,
+        rest: mappedWeatherData
+    };
 };
 
 export default { mapWeatherData };
