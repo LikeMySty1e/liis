@@ -1,18 +1,15 @@
 .main {
+    position: relative;
     padding: 10%;
     display: flex;
     justify-content: center;
     width: auto;
+    z-index: 1;
 }
 
 .weather__container {
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-}
-
-.list {
-    width: 30%;
-    height: 50%;
 }

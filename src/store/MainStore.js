@@ -5,6 +5,8 @@ import {mapWeatherData} from '../helpers/mapper';
 
 import locationModel from './models/locationModel';
 import weatherModel from './models/weatherModel';
+import WeatherResource from '../resources/weatherResource';
+import WeatherConditionEnum from '../enums/WeatherConditionEnum';
 
 export default class MainStore {
     location = locationModel;
@@ -60,7 +62,18 @@ export default class MainStore {
         }
     }
 
+    changeConditionForToday = (condition) => {
+        if (condition !== this.today.condition) {
+            this.today.condition = condition;
+            this.today.resource = WeatherResource[condition] || WeatherResource[WeatherConditionEnum.Clear];
+        }
+    }
+
     get isLoading() {
         return this.loading;
+    }
+
+    get weatherResource() {
+        return WeatherResource;
     }
 }

@@ -58,6 +58,7 @@ WeatherCard.propTypes = {
             resource: PropTypes.shape({
                 icon: PropTypes.object,
                 name: PropTypes.string,
+                condition: PropTypes.string,
                 gradient: PropTypes.arrayOf(PropTypes.string),
                 cardClassname: PropTypes.string
             })

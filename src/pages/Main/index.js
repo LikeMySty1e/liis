@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import WeatherCard from './components/WeatherCard';
 import WeatherList from './components/WeatherList';
+import WeatherButtons from './components/WeatherButtons';
 import {useInterval} from '../../hooks/useInterval';
 
 import style from './style.module.scss';
@@ -17,9 +18,10 @@ function Main(props) {
         onResponse: () => console.log(`Погода перезагружена`),
         onError: e => console.error(`Возникла ошибка при попытке интервального обновления табов: ${e}`),
         delay: data.interval
-    })
+    });
 
     return  <div className={style.main}>
+        <WeatherButtons />
         <div className={style.weather__container}>
             <WeatherCard />
             <WeatherList />

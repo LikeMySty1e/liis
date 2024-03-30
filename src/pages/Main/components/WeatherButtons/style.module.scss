@@ -1,0 +1,20 @@
+.buttons {
+        position: absolute;
+        bottom: 25%;
+        left: 80px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 10;
+    }
+
+    .icon__button {
+        transition: all linear 350ms;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+            transform-origin: right;
+        }
+}

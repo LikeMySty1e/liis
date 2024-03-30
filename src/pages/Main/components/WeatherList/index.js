@@ -28,12 +28,13 @@ WeatherList.propTypes = {
     data: PropTypes.shape({
         rest: PropTypes.arrayOf(
             PropTypes.shape({
-                date: PropTypes.number,
+                date: PropTypes.string,
                 temp: PropTypes.number,
                 feelsLike: PropTypes.number,
                 resource: PropTypes.shape({
                     icon: PropTypes.object,
                     name: PropTypes.string,
+                    condition: PropTypes.string,
                     gradient: PropTypes.arrayOf(PropTypes.string),
                     cardClassname: PropTypes.string
                 })
