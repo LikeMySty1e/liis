@@ -15,7 +15,7 @@ function Cube(props) {
     useInterval({
         callback: actions.loadWeatherData,
         onResponse: () => console.log(`Погода перезагружена`),
-        onError: e => console.error(`Возникла ошибка при попытке интервального обновления табов: ${e}`),
+        onError: e => console.error(`Возникла ошибка при попытке интервального обновления погоды: ${e}`),
         delay: data.interval
     });
 

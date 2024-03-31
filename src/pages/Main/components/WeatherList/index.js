@@ -14,7 +14,7 @@ function WeatherList(props) {
     }
 
     return <div className={style.list}>
-        {data.rest.map(item => <div className={style.item}>
+        {data.rest.map(item => <div key={item.date} className={style.item}>
             <SvgIcon width={`48px`} height={`48px`} Icon={item.resource.icon}/>
             <div className={style.details}>
                 <div className={style.temp}>{item.temp}<span className={style.unit}>°C</span></div>
