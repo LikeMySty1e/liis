@@ -1,9 +1,8 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import {observer, inject} from "mobx-react";
 import PropTypes from 'prop-types';
 import {Canvas} from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
-
 
 import CubeModel from './components/CubeModel';
 import {useInterval} from '../../hooks/useInterval';
@@ -21,14 +20,14 @@ function Cube(props) {
     });
 
     return <div className={style.cube__container}>
-        <Suspense fallback={null}>
+        <React.Suspense fallback={null}>
             <Canvas>
                 <OrbitControls enableZoom={false} enablePan={false}/>
                 <ambientLight intensity={1} />
                 <directionalLight position={[3, 2, 1]} />
                 <CubeModel />
             </Canvas>
-        </Suspense>
+        </React.Suspense>
     </div>;
 }
 

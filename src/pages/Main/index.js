@@ -9,7 +9,6 @@ import {useInterval} from '../../hooks/useInterval';
 
 import style from './style.module.scss';
 
-
 function Main(props) {
     const { data, actions } = props;
 
@@ -20,13 +19,13 @@ function Main(props) {
         delay: data.interval
     });
 
-    return  <div className={style.main}>
+    return <div className={style.main}>
         <WeatherButtons />
         <div className={style.weather__container}>
             <WeatherCard />
             <WeatherList />
         </div>
-    </div>
+    </div>;
 }
 
 Main.propTypes = {

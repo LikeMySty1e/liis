@@ -1,6 +1,10 @@
 import WeatherResource from '../resources/weatherResource';
 import WeatherConditionEnum from '../enums/WeatherConditionEnum';
 
+export const getWeatherResource = condition => {
+    return WeatherResource[condition] || WeatherResource[WeatherConditionEnum.Clouds];
+};
+
 export const mapWeatherData = (list = []) => {
     const mappedWeatherData = [];
 
@@ -16,7 +20,7 @@ export const mapWeatherData = (list = []) => {
             temp: Math.round(list[i].main.temp),
             feelsLike: Math.round(list[i].main.feels_like),
             condition: weather.main,
-            resource: WeatherResource[weather.main] || WeatherResource[WeatherConditionEnum.Clouds]
+            resource: getWeatherResource(weather.main)
         })
     }
 
@@ -28,4 +32,4 @@ export const mapWeatherData = (list = []) => {
     };
 };
 
-export default { mapWeatherData };
+export default { mapWeatherData, getWeatherResource };

@@ -44,8 +44,6 @@ body::-webkit-scrollbar {
 
 
   height: 100%;
-  //background: #eee;
-  //background: linear-gradient(0deg, rgba(0, 0, 200, 0.2) , rgba(0, 0, 200, 0) );
   background: rgb(83,102,227);
   background: linear-gradient(270deg, rgba(83,102,227,1) 6%, rgba(145,115,235,1) 46%, rgba(207,195,241,1) 99%);
   -webkit-background-size: cover;
@@ -54,5 +52,4 @@ body::-webkit-scrollbar {
   background-size: cover;
 
   font-family: 'Gilroy', sans-serif;
-  //overflow-y: hidden;
 }

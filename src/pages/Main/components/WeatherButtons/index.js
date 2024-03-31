@@ -15,6 +15,7 @@ function WeatherButtons(props) {
 
     return <div className={style.buttons}>
         {Object.values(data.weatherResource).map(item => <div
+            key={item.condition}
             className={style.icon__button}
             onClick={() => actions.changeConditionForToday(item.condition)}
         >

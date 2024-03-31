@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+
 import WeatherApp from './App';
 
 const domNode = document.getElementById('root');

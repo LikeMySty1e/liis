@@ -1,12 +1,11 @@
 import {makeAutoObservable, runInAction} from 'mobx';
 
 import {getLocationData, getWeatherData} from '../services/weatherDataService';
-import {mapWeatherData} from '../helpers/mapper';
+import {getWeatherResource, mapWeatherData} from '../helpers/mapper';
 
 import locationModel from './models/locationModel';
 import weatherModel from './models/weatherModel';
 import WeatherResource from '../resources/weatherResource';
-import WeatherConditionEnum from '../enums/WeatherConditionEnum';
 
 export default class MainStore {
     location = locationModel;
@@ -65,7 +64,7 @@ export default class MainStore {
     changeConditionForToday = (condition) => {
         if (condition !== this.today.condition) {
             this.today.condition = condition;
-            this.today.resource = WeatherResource[condition] || WeatherResource[WeatherConditionEnum.Clear];
+            this.today.resource = getWeatherResource(condition);
         }
     }
 

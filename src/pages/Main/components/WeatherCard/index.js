@@ -12,8 +12,6 @@ import weatherStyle from '../../../../styles/weather.module.scss';
 function WeatherCard(props) {
     const { data, flags } = props;
 
-    console.log(data.today)
-
     const renderHeader = () => {
        return <div className={style.details}>
             <div className={style.temp}>{data.today.temp}<span className={style.unit}>°C</span></div>

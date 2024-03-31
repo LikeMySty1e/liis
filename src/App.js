@@ -9,11 +9,9 @@ import './styles/main.scss';
 function WeatherApp(props) {
     const store = useStore(MainStore, props);
 
-    return (
-        <Provider store={store}>
-            <AppRouter />
-        </Provider>
-    );
+    return <Provider store={store}>
+        <AppRouter />
+    </Provider>;
 }
 
 export default observer(WeatherApp);
